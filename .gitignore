@@ -1,0 +1,10 @@
+/build/
+/logs/
+/src/output/
+*.exe
+*.obj
+*.o
+*.a
+*.dll
+*.so
+*.dylib
