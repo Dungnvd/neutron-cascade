@@ -20,6 +20,9 @@ def read_log(path: Path) -> List[Dict[str, str]]:
     with path.open("r", newline = "", encoding = "utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
+            #population = 0 -> neutron cascade has ended, skip these rows
+            if int(float(row["Population"])) == 0:
+                continue
             rows.append(row)
     return rows
 

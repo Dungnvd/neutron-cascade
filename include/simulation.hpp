@@ -19,8 +19,10 @@ public:
     const std::vector<Neutron>& neutrons() const noexcept;
     const std::vector<FissionEvent>& fission_events() const noexcept;
     const SimulationStats& stats() const noexcept;
+    const std::vector<Vec3>& fissile_sites() const noexcept;
 
 private:
+    void initialize_fissile_sites();
     void move_neutron(Neutron& neutron, float delta_time);
     bool is_inside_boundary(const Neutron& neutron) const;
     Vec3 random_direction();
@@ -33,6 +35,7 @@ private:
     std::vector<Neutron> neutrons_;
     std::vector<Neutron> next_neutrons_;
     std::vector<FissionEvent> fission_events_;
+    std::vector<Vec3> fissile_sites_;
 
     std::mt19937_64 random_engine_;
 };

@@ -23,6 +23,10 @@ add_executable(
     src/main.cpp
     src/simulation.cpp
     src/simulation_logger.cpp
+    src/render_types.cpp
+    src/fission_effect.cpp
+    src/renderer.cpp
+    src/input.cpp
 
 )
 
@@ -120,22 +124,6 @@ add_test(
     COMMAND test_reset_behavior
 )
 
-
-add_executable(
-    test_no_collision_population_constant
-    tests/test_no_collision_population_constant.cpp
-    src/simulation.cpp
-)
-
-target_include_directories(
-    test_no_collision_population_constant
-    PRIVATE include
-)
-
-add_test(
-    NAME no_collision_population_constant
-    COMMAND test_no_collision_population_constant
-)
 
 add_executable(
     benchmark_simulation

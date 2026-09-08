@@ -8,7 +8,6 @@ int main(){
     config.initial_neutrons = 20;
     config.collision_probability = 1.0F;
     config.fission_probability = 1.0F;
-    config.min_spawned_neutrons = 3;
     config.max_population = 200;
     config.space_size = 100.0F;
     config.random_seed = 42;

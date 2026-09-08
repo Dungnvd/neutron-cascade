@@ -7,7 +7,7 @@
 int main(){
     SimulationConfig config{};
     config.initial_neutrons = 20;
-    config.collision_probability = 0.25F;
+    config.collision_probability = 1.0F;
     config.fission_probability = 0.6F;
     config.space_size = 100.0F;
     config.max_population = 1000;
@@ -16,7 +16,15 @@ int main(){
     Simulation sim(config);
 
     constexpr float dt = 1.0F / 60.0F;
-    constexpr int warmup_steps = 120;
+    const float start_y = config.space_size * 0.5F - 0.5F;
+    const float interaction_radius = config.space_size * 0.045F;
+    const float distance_to_target = start_y - interaction_radius;
+    const float distance_per_step = config.neutron_speed * dt;
+
+    const int steps_to_reach_target =
+        static_cast<int>(distance_to_target / distance_per_step) + 1;
+
+    const int warmup_steps = steps_to_reach_target + 200;
     constexpr int check_steps = 80;
     constexpr float epsilon = 1e-6F;
 
